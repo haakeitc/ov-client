@@ -19,9 +19,11 @@ jobs:
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: checkout code
+      - uses: actions/checkout@v2
+
     - name: Build and push Docker image
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
     - uses: docker/build-push-action@v1.1.0
       with:
         # Username used to log in to a Docker registry. If not set then no login will occur
@@ -30,3 +32,5 @@ jobs:
         password: # xcsdwe23#  
         build-args:
         push: true
+        
+        
