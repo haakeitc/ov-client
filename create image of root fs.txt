@@ -1,0 +1,20 @@
+docker run --name ovbox -it --mount type=bind,source=C:\Users\lutz\project\ovbox\vol,target=/vol 69f /bin/bash
+
+docker run --name ovbox -it 69f /bin/bash
+mkdir /image
+cd /image
+rm -f *
+dd if=/dev/zero of=XenGuest1.img bs=1024k seek=6144 count=0
+mkfs -t ext3 XenGuest1.img
+
+mount -o loop XenGuest1.img /mnt
+
+--> unsuppioerted ioctl
+like https://github.com/multiarch/qemu-user-static/issues/101???
+ARM on x64
+
+
+
+---------
+
+docker run --name ovclient -it --mount type=bind,source=C:\Users\lutz\project\ov-client\image,target=/image 69f /bin/bash
